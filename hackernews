@@ -15,15 +15,16 @@ $('tr.athing td.title a').attr("target","_blank");
 $('.title').attr("style", "font-size: 14pt");
 
 var pts = [];
-$('td.subtext span.score').each(function() { 
+$('td.subtext span.score').each(function() {
 	var pt = $(this).text().split(' ')[0]
   pts.push(parseInt(pt))
 });
 
 var max = Math.max(...pts)
 $('td.subtext').each(function() {
-	var pt = $(this).children().first().text().split(' ')[0]
-  var heat = pt/max
-  console.log( "Heat:" + heat + ";: " + $(this).children().first().text() );
-  $(this).css('background-image', 'linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,' + heat + '))');
+    var pt = $(this).find('span.subline span.score').text().split(' ')[0]
+    console.log("Max points is : " + max + ",Point is : " + pt);
+    var heat = pt/max
+    console.log( "Heat:" + heat + ";: " + $(this).children().first().text() );
+    $(this).css('background-image', 'linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,' + heat + '))');
 });
